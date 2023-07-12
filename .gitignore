@@ -1,0 +1,77 @@
+# Archivos generados por LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.gz
+*.dvi
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.pdfsync
+*.xdv
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# Otros archivos y directorios generados por LaTeX
+_build/
+*.bak
+*.backup
+*.swp
+
+# Archivos y directorios específicos de editores de LaTeX como TeXstudio o TeXmaker
+*.cwl
+*.synctex
+*.synctex(busy)
+*.synctex.gz(busy)
+*.pdfc
+*.dtx
+*.md5
+*.ist
+*.loa
+*.lof
+
+# Archivos generados por herramientas auxiliares de LaTeX
+*.run.xml
+*.bcf
+*.idx
+*.ind
+*.ilg
+*.toc
+*.gls
+*.glo
+*.glg
+*.glsdefs
+*.alg
+*.acr
+*.acn
+*.ist
+*.xdy
+
+# Directorios y archivos específicos de compiladores y constructores de LaTeX
+/.latex
+/.ltxobj
+/.tlg
+/latexmkrc
+
+# Directorios de salida generados por TeX Live
+_build/
+
+# Directorios de salida generados por MiKTeX
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.xref
