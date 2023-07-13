@@ -56,20 +56,23 @@ should not be used}
 
 \section{Introducción}
 
-La escasez mundial de medicamentos esenciales representa un desafío significativo para numerosos países, afectando la calidad y eficiencia de la atención médica de los pacientes. Esta escasez conduce a la imposibilidad de cumplir las prescripciones médicas, resultando en el uso inadecuado de medicamentos y malos resultados sanitarios. La falta de tratamiento oncológico y el uso inapropiado de antibióticos debido a la escasez de medicamentos de primera línea son solo algunos ejemplos de los impactos negativos. Además, el uso de regímenes de segunda y tercera línea puede agravar la farmacorresistencia y aumentar los costos. La carga mundial de subtratamiento y la ausencia de tratamiento aún no se comprenden completamente, pero se espera que la escasez empeore debido a su tendencia creciente y a la combinación con el uso inapropiado de medicamentos. Además, la escasez ha dado lugar a la entrada de productos médicos falsificados o de baja calidad en la cadena de suministro, lo que representa un riesgo para la seguridad de los pacientes \cite{OMS2016}.
+Este trabajo se centra en abordar la creciente crisis de la escasez de medicamentos esenciales en todo el mundo, la cual ha llevado a malos resultados sanitarios y al uso inapropiado de medicamentos. El suministro insuficiente en sistemas de salud, evidente especialmente en América Latina y el Caribe, impide satisfacer las necesidades de salud pública y de los pacientes. \cite{OMS2016}.
 
-La optimización de la distribución de medicamentos en los centros de salud se ha identificado como un enfoque clave para mejorar la eficiencia y la disponibilidad. Para abordar este desafío, se han utilizado modelos matemáticos y algoritmos computacionales, incluyendo los algoritmos metaheurísticos, que ofrecen soluciones aproximadas a problemas complejos de optimización combinatoria.
+Nuestro objetivo es implementar una solución de software basada en algoritmos metaheurísticos, particularmente el algoritmo de Búsqueda del Péndulo, para optimizar la distribución de medicamentos en los centros de salud. La propuesta es desarrollar una API RESTful utilizando Node.js y MongoDB que implemente este algoritmo, con el fin de proporcionar una solución que busque la distribución óptima en tiempos razonables y con costos computacionales acotados.
 
-En este contexto, el objetivo de este trabajo es desarrollar una solución de software basada en metaheurísticas para optimizar la distribución de medicamentos en centros de salud. Se implementará el algoritmo de Búsqueda del Péndulo (PSA) en una API RESTful utilizando Node.js y MongoDB. Además, se propondrá el desarrollo de una aplicación web que utilice esta API para permitir a los usuarios optimizar la distribución de medicamentos de manera eficiente y efectiva. Se considerará la factibilidad y viabilidad de esta solución en la situación actual de Chile.
+En el ámbito de la distribución de medicamentos, la optimización juega un papel fundamental para mejorar la eficiencia y disponibilidad en los centros de salud. Para abordar este problema, se han utilizado modelos matemáticos y algoritmos computacionales, entre ellos los algoritmos metaheurísticos, que proporcionan soluciones aproximadas a problemas complejos de optimización combinatoria.
+
+En este contexto, este trabajo tiene como objetivo desarrollar una solución de software basada en metaheurísticas para optimizar la distribución de medicamentos en centros de salud. Se propone la implementación del algoritmo de Búsqueda del Péndulo (PSA) en una API RESTful utilizando Node.js y MongoDB. Además, se plantea el desarrollo de una aplicación web que utilice esta API para que los usuarios puedan realizar la optimización de la distribución de medicamentos de manera eficiente y efectiva, considerando la factibilidad y viabilidad del modelo propuesto en la situación actual de Chile.
 
 Los objetivos específicos de este trabajo son los siguientes:
 \begin{enumerate}
-    \item Estudiar y comprender en profundidad el algoritmo de Búsqueda del Péndulo, incluyendo su implementación y parámetros.
-    \item Implementar una API RESTful utilizando Node.js y MongoDB que incluya la implementación del algoritmo PSA para la optimización de la distribución de medicamentos en centros de salud.
-    \item Realizar pruebas y evaluaciones del algoritmo de Búsqueda del Péndulo implementado en la API en diferentes escenarios de distribución de medicamentos, con el fin de validar su eficacia y eficiencia.
-    \item Generar una interfaz visual con Swagger que permita a los usuarios conocer los parámetros de entrada y el formato de salida de la API.
-    \item Evaluar la factibilidad y viabilidad de la aplicación web desarrollada, considerando aspectos como la escalabilidad, seguridad, usabilidad y costos.
+    \item Estudiar a fondo el algoritmo de Búsqueda del Péndulo y entender su implementación y parámetros necesarios.
+    \item Implementar una API RESTful que incluya la implementación del algoritmo para la optimización de la distribución de medicamentos en centros de salud.
+    \item Realizar pruebas y evaluaciones del algoritmo en la API en diferentes escenarios de distribución de medicamentos para validar su eficacia y eficiencia.
+    \item Generar una interfaz visual con Swagger para facilitar el uso de la API por parte de los usuarios.
+    \item Evaluar la factibilidad y viabilidad de la aplicación web desarrollada, teniendo en cuenta aspectos como la escalabilidad, seguridad, usabilidad y costos.
 \end{enumerate}
+
 \section{Marco teórico}
 \label{sec:MT}
 \subsection{Tema 1}
