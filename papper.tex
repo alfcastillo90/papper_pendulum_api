@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{tabularx}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -49,7 +50,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
     Este trabajo tiene como objetivo proponer una solución para optimizar la
     distribución de medicamentos en centros de salud utilizando un algoritmo de
-    Búsqueda del Péndulo (PSA) implementado en una API Restful con Node.js y
+    Búsqueda del Péndulo implementado en una API Restful con Node.js y
     MongoDB. La solución propuesta se enfoca en la utilización de la
     metaheurística
     como método de optimización y la implementación de una aplicación web que
@@ -110,7 +111,7 @@ combinatoria.
 En este contexto, este trabajo tiene como objetivo desarrollar una solución de
 software basada en metaheurísticas para optimizar la distribución de
 medicamentos en centros de salud. Se propone la implementación del algoritmo de
-Búsqueda del Péndulo (PSA) en una API RESTful utilizando Node.js y MongoDB.
+Búsqueda del Péndulo en una API RESTful utilizando Node.js y MongoDB.
 Además, se plantea el desarrollo de una aplicación web que utilice esta API
 para que los usuarios puedan realizar la optimización de la distribución de
 medicamentos de manera eficiente y efectiva, considerando la factibilidad y
@@ -210,7 +211,7 @@ diseño de microservicios y admiten la interoperabilidad y la WWW. Los
 principios de REST, como la interfaz uniforme y la identificación de recursos,
 permiten una arquitectura simple y escalable \cite{ehsan2022}.
 
-\subsection{Algoritmo de búsqueda del pendulo}
+\subsection{Algoritmo de búsqueda del péndulo}
 El movimiento armónico del péndulo que oscila centrado en un punto pivote se
 imita en este algoritmo. Donde la amplitud del movimiento armónico en ambos
 lados del pivote es igual, va amortiguándose y disminuyéndose con el tiempo.
@@ -229,7 +230,7 @@ oscilación armónica.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth, keepaspectratio]{Figures/image1.png}
-    \caption{Movimiento armonico del pendulo. \cite{aziz2022}}
+    \caption{Movimiento armonico del péndulo. \cite{aziz2022}}
     \label{fig:mi_etiqueta}
 \end{figure}
 
@@ -301,7 +302,8 @@ $\text{pend}_i^d$ diferente y es calculado por medio de la siguiente ecuación.
     \label{fig:mi_etiqueta}
 \end{figure}
 
-Esta ecuación imita la ecuación armónica, $t_{\text{max}}$ es el número máximo de
+Esta ecuación imita la ecuación armónica, $t_{\text{max}}$ es el número máximo
+de
 iteraciones, y \texttt{rand} es un número aleatorio proveniente de una
 distribución uniforme. La amplitud máxima de desplazamiento 2 se elige de tal
 manera que la exploración sea favorecida durante las primeras iteraciones. Una
@@ -324,17 +326,27 @@ El pseudocódigo del algoritmo es mostrado en la siguiente tabla:
     \centering
     \begin{tabular}{|c|l|}
         \hline
-        \textbf{Paso} & \textbf{Acción}                                                            \\
+        \textbf{Paso} & \textbf{Acción}
+        \\
         \hline
-        1             & Inicializar aleatoriamente los parámetros y las posiciones de los agentes. \\
-        2             & Para i = 1 hasta el número máximo de iteraciones:                          \\
-        3             & \hspace{1em} Para cada agente:                                             \\
-        4             & \hspace{2em} Actualizar el agente usando la ecuación (1) y (2).            \\
-        5             & \hspace{2em} Evaluar el valor de aptitud del agente.                       \\
-        6             & \hspace{1em} Fin del ciclo para cada agente.                               \\
-        7             & \hspace{1em} Identificar el mejor agente.                                  \\
-        8             & Fin del ciclo para i.                                                      \\
-        9             & Solución: mejor agente.                                                    \\
+        1             & Inicializar aleatoriamente los parámetros y las
+        posiciones de los agentes.                                           \\
+        2             & Para i = 1 hasta el número máximo de iteraciones:
+        \\
+        3             & \hspace{1em} Para cada agente:
+        \\
+        4             & \hspace{2em} Actualizar el agente usando la ecuación
+        (1) y (2).                                                           \\
+        5             & \hspace{2em} Evaluar el valor de aptitud del agente.
+        \\
+        6             & \hspace{1em} Fin del ciclo para cada agente.
+        \\
+        7             & \hspace{1em} Identificar el mejor agente.
+        \\
+        8             & Fin del ciclo para i.
+        \\
+        9             & Solución: mejor agente.
+        \\
         \hline
     \end{tabular}
     \caption{Pseudocódigo del Algoritmo de Búsqueda del Péndulo.}
@@ -343,49 +355,214 @@ El pseudocódigo del algoritmo es mostrado en la siguiente tabla:
 
 \section{Resultados}
 \label{sec:Res}
-\subsection{Resultados 1}
 
-\subsection{Resultados 2}
+\subsection{Optimización de Problemas Benchmark}
 
-\begin{itemize}
-    \item T1.
-    \item T2.
-    \item T3.
-\end{itemize}
+Según \cite{aziz2022} El rendimiento del algoritmo de Búsqueda del Péndulo
+propuesto se estudia utilizando 13
+funciones
+multimodales del conjunto de pruebas de referencia CEC2014, funciones 4--16.
+Estas funciones son problemas de minimización que se desplazan y rotan desde
+sus funciones básicas originales. El desplazamiento y la rotación evitan el
+problema del sesgo de origen. Las funciones multimodales tienen muchos óptimos
+locales y un óptimo global final. Las funciones multimodales son adecuadas para
+observar si un algoritmo es capaz de realizar y evitar la convergencia
+prematura o no, así como para observar la capacidad de exploración y
+explotación del algoritmo. Por lo tanto, solo se adoptan aquí las 14 funciones
+multimodales. Los nombres y la idoneidad ideal de las funciones se enumeran en
+la Tabla 1; otros detalles de las 13 funciones de referencia, como sus
+funciones matemáticas, se pueden encontrar en \cite{Liang2013}.
 
-Tabla~\ref{tab:1}
-Fig.~\ref{fig:1}
-
-\begin{table}[htbp]
-    \caption{Table Type Styles}
-    \begin{center}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            \textbf{Table}            & \multicolumn{3}{|c|}{\textbf{Table
-                    Column Head}}
-            \\
-            \cline{2-4}
-            \textbf{Head}             & \textbf{\textit{Table column subhead}}
-                                      &
-            \textbf{\textit{Subhead}} & \textbf{\textit{Subhead}}
-            \\
-            \hline
-            copy                      & More table copy$^{\mathrm{a}}$
-                                      &
-                                      &
-            \\
-            \hline
-            \multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
-        \end{tabular}
-        \label{tab:1}
-    \end{center}
+\renewcommand{\tablename}{Tabla}
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{0.5\textwidth}{|X|c|}
+        \hline
+        \textbf{Nombre de la Función}
+         & \textbf{Aptitud Ideal} \\
+        \hline
+        f4: Shifted and Rotated Rosenbrock’s Function
+         & 400                    \\
+        f5: Shifted and Rotated Ackley’s Function
+         & 500                    \\
+        f6: Shifted and Rotated Weierstrass Function
+         & 600                    \\
+        f7: Shifted and Rotated Griewank’s Function
+         & 700                    \\
+        f8: Shifted Rastrigin’s Function
+         & 800                    \\
+        f9: Shifted and Rotated Rastrigin’s Function
+         & 900                    \\
+        f10: Shifted Schwefel’s Function
+         & 1000                   \\
+        f11: Shifted and Rotated Schwefel’s Function
+         & 1100                   \\
+        f12: Shifted and Rotated Katsuura Function
+         & 1200                   \\
+        f13: Shifted and Rotated HappyCat Function
+         & 1300                   \\
+        f14: Shifted and Rotated HGBat Function
+         & 1400                   \\
+        f15: Shifted and Rotated Expanded Griewank’s plus Rosenbrock’s Function
+         & 1500                   \\
+        f16: Shifted and Rotated Expanded Scaffer’s F6 Function
+         & 1600                   \\
+        \hline
+    \end{tabularx}
+    \caption{Nombres de las funciones y su aptitud ideal.}
+    \label{table:functions}
 \end{table}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics{Figures/fig1.png}}
-    \caption{Figura Ejemnplo.}
-    \label{fig:1}
+\subsection{Número de Agentes}
+Según \cite{aziz2022} Solo hay dos parámetros que seleccionar para el algoritmo
+de busqueda del péndulo. El
+primero es el número de iteraciones. Este está relacionado con la capacidad
+computacional de la plataforma de cálculo y la complejidad de los problemas.
+Por tanto, para este experimento, el número de iteraciones se establece en
+1000. El segundo parámetro es el número de agentes. En esta sección se
+investiga el efecto del número de agentes. Los números de agentes probados son
+10, 20, 30, 40 y 50. Todos los ajustes se ejecutan 30 veces; los mejores
+resultados de la ejecución se tabulan en la Tabla 3. Dado que las funciones de
+referencia son problemas de minimización, los mejores resultados son el valor
+mínimo de las 30 ejecuciones de cada configuración. Se puede observar que no
+hay un número de agentes que funcione mejor para todas las funciones de prueba.
+Sin embargo, el número de agentes igual a 50 obtuvo un mayor número de mejores
+resultados en comparación con los demás.
+
+\renewcommand{\tablename}{Tabla}
+\begin{table}[h]
+    \centering
+    \resizebox{0.5\textwidth}{!}{%
+        \begin{tabular}{lccccc}
+            \hline
+            \textbf{Nombre de la Función} & \multicolumn{5}{c}{\textbf{Número
+                    de Agentes}}
+            \\
+                                          & \textbf{10}
+                                          & \textbf{20}                       &
+            \textbf{30}                   & \textbf{40}                       &
+            \textbf{50}                                                         \\
+            \hline
+            f4                            & 400.0557
+                                          & 400.0003                          &
+            400.001                       & 400.0008                          &
+            400.0013                                                            \\
+            f5                            & 519.997
+                                          & 519.996                           &
+            519.9923                      & 519.983                           &
+            519.9913                                                            \\
+            f6                            & 601.5922
+                                          & 601.0678                          &
+            600.3217                      & 600.3587                          &
+            600.0771                                                            \\
+            f7                            & 700.0595
+                                          & 700.027                           &
+            700.0418                      & 700.0591                          &
+            700.0517                                                            \\
+            f8                            & 801.9904
+                                          & 800                               &
+            800                           & 800                               &
+            800                                                                 \\
+            f9                            & 905.9708
+                                          & 905.9698                          &
+            904.9748                      & 905.9698                          &
+            904.9748                                                            \\
+            f10                           & 1007.031
+                                          & 1000.375                          &
+            1000.25                       & 1003.602                          &
+            1000.25                                                             \\
+            f11                           & 1247.431
+                                          & 1226.78                           &
+            1140.238                      & 1222.493                          &
+            1131.949                                                            \\
+            f12                           & 1200.059
+                                          & 1200.006                          &
+            1200.012                      & 1200.01                           &
+            1200.017                                                            \\
+            f13                           & 1300.138
+                                          & 1300.132                          &
+            1300.1                        & 1300.043                          &
+            1300.137                                                            \\
+            f14                           & 1400.171
+                                          & 1400.144                          &
+            1400.123                      & 1400.079                          &
+            1400.052                                                            \\
+            f15                           & 1500.94
+                                          & 1500.575                          &
+            1500.499                      & 1500.578                          &
+            1500.417                                                            \\
+            f16                           & 1602.263
+                                          & 1602.072                          &
+            1602.032                      & 1601.511                          &
+            1601.108                                                            \\
+            \hline
+            \textbf{Friedman Rank}        & 5
+                                          & 2.9615                            &
+            2.3462                        & 2.5769                            &
+            2.1154                                                              \\
+            \hline
+        \end{tabular}%
+    }
+    \caption{Resultados de las funciones con diferentes números de agentes}
+    \label{tab:agentes}
+\end{table}
+
+El test de rango con signo de Friedman de 1 × N se realiza entonces para
+identificar el mejor número de agentes utilizando este conjunto de funciones de
+referencia. El test de rango con signo de Friedman es un método estadístico
+comúnmente utilizado para proporcionar un análisis imparcial del rendimiento de
+las metaheurísticas \cite{alcala-fdez2009, triguero2017, alcala-fdez2011}.
+Cuanto menor sea el rango de Friedman de un algoritmo, mejor será el algoritmo.
+Un test de 1 × N compara el algoritmo mejor clasificado con los demás
+algoritmos. Si el valor estadístico de Friedman, que se distribuye de acuerdo a
+$\chi^2$ con $k-1$ grados de libertad, donde $k$ es el número de prueba (aquí
+$k=5$, es decir, 5 número de agentes probados), tiene un valor p menor que el
+nivel de significancia adoptado, $\alpha$, entonces se rechaza la hipótesis
+nula que afirma que todos los ajustes probados están a la par entre sí. Para
+identificar la diferencia significativa, se adopta un procedimiento post-hoc
+conocido como procedimiento post-hoc de Holm. En este trabajo, se adopta
+$\alpha=0.05$. Además de 0.05, 0.1 también es comúnmente usado por los
+investigadores. Cuanto menor sea el valor, más estricto será el test
+estadístico en la aceptación de la hipótesis nula.
+
+Según \cite{aziz2022} para el algoritmo debusqueda del pendulo, se realizo el
+test estadístico
+utilizando Knowledge Extraction based on Evolutionary Learning (KEEL), que es
+una herramienta de código abierto
+con módulos de análisis estadístico \cite{alcala-fdez2009, triguero2017,
+    alcala-fdez2011}. KEEL es un software amigable para el usuario desarrollado
+por
+un grupo de investigadores para fines de investigación y académicos
+\cite{alcala-fdez2009, triguero2017, alcala-fdez2011}.
+
+Los rangos de Friedman se muestran en la última fila de la Tabla 3. El valor
+estadístico de Friedman (distribuido de acuerdo con $\chi^2$ con 4 grados de
+libertad) es 28.030769 y su valor p es 0.000012, que es menor que un nivel de
+significancia de 0.05. Por lo tanto, existe una diferencia significativa entre
+los cinco ajustes. El post-hoc de Holm se utiliza para determinar qué ajuste es
+igual o peor que el número de agentes mejor clasificado. La Tabla 3 muestra el
+valor p y el valor de Holm del test post-hoc. El procedimiento de Holm rechaza
+aquellas hipótesis que tienen un valor p < Holm. Por lo tanto, un número de
+agentes igual a 10 es significativamente peor que 50, y los demás están a la
+par entre sí. Por lo tanto, se puede concluir que se recomienda un número de
+agentes superior a 20 para el algoritmo de busqueda del péndulo.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth, keepaspectratio]{Figures/image3.png}
+    \caption{Error de aptitud de las funciones de referencia con diferente
+        número de agentes
+        \cite{aziz2022}}
+    \label{fig:mi_etiqueta}
 \end{figure}
+
+Según \cite{aziz2022} la imagen 3 ilustra aún más los resultados del experimento. Los resultados se
+convierten en valores de error para una mejor representación gráfica. El valor
+del error es la diferencia entre la aptitud de la solución encontrada y la
+aptitud ideal. En la parte superior izquierda de la figura se encuentra un
+acercamiento del gráfico. Similar a lo que se observa en la Tabla 2, se puede
+ver que el número de agentes igual a 50 proporciona el menor error en la
+mayoría de las funciones, pero no en todas las funciones.
 
 \section{Trabajos Relacionados}
 \label{sec:TR}
@@ -406,23 +583,26 @@ optimización donde la solución global se encuentra en el origen.
 El rendimiento disminuye con los problemas desplazados. Se necesitan tres
 números aleatorios en SCA.
 
-En este trabajo, se imita un fenómeno físico, a saber, el movimiento armónico
+El trabajo de \cite{aziz2022} imita un fenómeno físico, a saber, el movimiento
+armónico
 de un péndulo, para mover a los agentes de búsqueda de manera que se logre una
 solución óptima. A diferencia de SCA, el movimiento armónico del péndulo
 disminuye con la función exponencial. Se ha observado que la función
 exponencial proporciona un buen equilibrio entre exploración y explotación en
 metaheurísticas \cite{aziz2018singlesolution, rahman2018singleagent}. Los
-agentes de PSA no seleccionan aleatoriamente entre
+agentes de algoritmo de Búsqueda del Péndulo no seleccionan aleatoriamente
+entre
 las funciones seno y coseno; más bien, siguen la función de movimiento
 armónico. La función de movimiento armónico determina el límite máximo para los
-números aleatorios que controlan la búsqueda estocástica de los agentes de PSA,
+números aleatorios que controlan la búsqueda estocástica de los agentes del
+algoritmo de Búsqueda del Péndulo,
 con respecto a la solución actual y la mejor solución.
 
 \section{Conclusiones}
 \label{sec:Conclusiones}
 En este trabajo se presentó una propuesta de solución para optimizar la
 distribución de medicamentos en centros de salud mediante la implementación de
-un algoritmo de Búsqueda del Péndulo (PSA) en una API Restful utilizando
+un algoritmo de Búsqueda del Péndulo en una API Restful utilizando
 Node.js y MongoDB. La solución propuesta se centró en la utilización de la
 metaheurística como método de optimización y en la implementación de una
 aplicación web que permita a los usuarios realizar la optimización de la
@@ -430,7 +610,7 @@ distribución de medicamentos de manera eficiente y efectiva.
 Se realizó una revisión bibliográfica exhaustiva sobre los algoritmos
 metaheurísticos y su aplicación en la optimización de la distribución de
 medicamentos en centros de salud. Se estudió en profundidad el algoritmo de
-Búsqueda del Péndulo (PSA) y se propone su implementación en una API Restful
+Búsqueda del Péndulo y se propone su implementación en una API Restful
 utilizando Node.js y MongoDB para la optimización de la distribución de
 medicamentos.
 La propuesta de solución presentada en este anteproyecto podría ser una
