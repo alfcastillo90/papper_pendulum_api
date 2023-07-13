@@ -13,10 +13,6 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \title{Optimización en la asignación de vacunas en centros de salud mediante
 una API RESTful basada en el algoritmo de búsqueda de Péndulo\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore
-and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{Carlos Alfredo Castillo Rodriguez}
@@ -179,7 +175,8 @@ Un peso de inercia decreciente con el tiempo es un ejemplo de un mecanismo
 adoptado con frecuencia por los investigadores para controlar el comportamiento
 de los agentes y favorecer la exploración al inicio de la búsqueda antes de
 cambiar a la explotación \cite{eberhart2000, bansal2011,
-    elkhateeb2013}. El peso de inercia decreciente con el tiempo reduce el tamaño del paso a medida que aumenta la
+    elkhateeb2013}. El peso de inercia decreciente con el tiempo reduce el
+tamaño del paso a medida que aumenta la
 iteración. Entre los patrones comunes aplicados por los investigadores se
 encuentran el peso de inercia decreciente linealmente y el peso de inercia
 decreciente exponencialmente\cite{bansal2011}.
@@ -226,7 +223,8 @@ El peso oscila de un lado a otro, mientras que la amplitud de la oscilación
 disminuye con el tiempo hasta que se alcanza el equilibrio. La resistencia del
 aire amortigua y desacelera el movimiento del péndulo. \cite{aziz2022}.
 
-La imagen 1 ilustra un péndulo oscilante colgado de una cuerda y su típica oscilación armónica. 
+La imagen 1 ilustra un péndulo oscilante colgado de una cuerda y su típica
+oscilación armónica.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth, keepaspectratio]{Figures/image1.png}
@@ -234,24 +232,30 @@ La imagen 1 ilustra un péndulo oscilante colgado de una cuerda y su típica osc
     \label{fig:mi_etiqueta}
 \end{figure}
 
-Según \cite{aziz2022} La ecuación de la oscilación armónica se muestra en la formula 1, es una ecuación de movimiento armónico simple amortiguado, donde:
+Según \cite{aziz2022} La ecuación de la oscilación armónica se muestra en la
+formula 1, es una ecuación de movimiento armónico simple amortiguado, donde:
 
 \begin{enumerate}
     \item $X(t)$ es la posición del objeto en función del tiempo.
-    \item $A$ es la amplitud de la oscilación, que representa la distancia máxima que el objeto se desplaza desde su posición de equilibrio.
-    \item $b$ es el coeficiente de amortiguamiento, que determina la rapidez con que se desvanece la amplitud de la oscilación debido al rozamiento del objeto con el medio en el que se encuentra.
+    \item $A$ es la amplitud de la oscilación, que representa la distancia
+          máxima que el objeto se desplaza desde su posición de equilibrio.
+    \item $b$ es el coeficiente de amortiguamiento, que determina la rapidez
+          con que se desvanece la amplitud de la oscilación debido al
+          rozamiento del
+          objeto con el medio en el que se encuentra.
     \item $m$ es la masa del objeto en movimiento.
     \item $t$ es el tiempo transcurrido desde el inicio del movimiento.
-    \item $\omega$ es la frecuencia angular, que determina la velocidad a la que se mueve el objeto en función del tiempo.
-    \item $\phi$ es la fase inicial de la oscilación, que representa el desfase entre el movimiento y su punto de partida.
+    \item $\omega$ es la frecuencia angular, que determina la velocidad a la
+          que se mueve el objeto en función del tiempo.
+    \item $\phi$ es la fase inicial de la oscilación, que representa el desfase
+          entre el movimiento y su punto de partida.
 \end{enumerate}
 
 La ecuación es:
 
 \begin{equation}
-X(t) = A \cdot e^{-\frac{b}{2m} \cdot t} \cdot \cos(\omega t - \phi) 
+    X(t) = A \cdot e^{-\frac{b}{2m} \cdot t} \cdot \cos(\omega t - \phi)
 \end{equation}
-
 
 \section{Resultados}
 \label{sec:Res}
@@ -301,14 +305,60 @@ Fig.~\ref{fig:1}
 
 \section{Trabajos Relacionados}
 \label{sec:TR}
-...
+
+El trabajo mas relacionado con este trabajo es el Algoritmo metaheuristico de
+seno-coseno, el cual se utiliza para guiar la búsqueda de la solución
+óptima fluctuando alrededor de la mejor solución. Para garantizar la
+convergencia, dicho algoritmo envuelve la función seno y coseno usando una
+función
+decreciente lineal reflejada por el eje del tiempo. Sin embargo, a pesar de la
+fluctuación y el sobre del decrecimiento lineal, tanto
+\cite{abualigah2021advances} como \cite{gabis2021comprehensive} enumeran
+la convergencia prematura como la desventaja de SCA. Además,
+\cite{askari2020critical} destacó que
+las ecuaciones de actualización de la solución de SCA resultan en un sesgo
+hacia el origen, lo que hace que SCA funcione muy bien para problemas de
+optimización donde la solución global se encuentra en el origen.
+El rendimiento disminuye con los problemas desplazados. Se necesitan tres
+números aleatorios en SCA.
+
+En este trabajo, se imita un fenómeno físico, a saber, el movimiento armónico
+de un péndulo, para mover a los agentes de búsqueda de manera que se logre una
+solución óptima. A diferencia de SCA, el movimiento armónico del péndulo
+disminuye con la función exponencial. Se ha observado que la función
+exponencial proporciona un buen equilibrio entre exploración y explotación en
+metaheurísticas \cite{aziz2018singlesolution, rahman2018singleagent}. Los
+agentes de PSA no seleccionan aleatoriamente entre
+las funciones seno y coseno; más bien, siguen la función de movimiento
+armónico. La función de movimiento armónico determina el límite máximo para los
+números aleatorios que controlan la búsqueda estocástica de los agentes de PSA,
+con respecto a la solución actual y la mejor solución.
 
 \section{Conclusiones}
 \label{sec:Conclusiones}
-En este trabajo se presentó una propuesta de solución para optimizar la distribución de medicamentos en centros de salud mediante la implementación de un algoritmo de Búsqueda del Péndulo (PSA) en una API Restful utilizando Node.js y MongoDB. La solución propuesta se centró en la utilización de la metaheurística como método de optimización y en la implementación de una aplicación web que permita a los usuarios realizar la optimización de la distribución de medicamentos de manera eficiente y efectiva.
-Se realizó una revisión bibliográfica exhaustiva sobre los algoritmos metaheurísticos y su aplicación en la optimización de la distribución de medicamentos en centros de salud. Se estudió en profundidad el algoritmo de Búsqueda del Péndulo (PSA) y se propone su implementación en una API Restful utilizando Node.js y MongoDB para la optimización de la distribución de medicamentos.
-La propuesta de solución presentada en este anteproyecto podría ser una alternativa viable y efectiva para resolver el problema de la distribución de medicamentos en centros de salud. La utilización de la metaheurística como método de optimización permitiría encontrar soluciones óptimas en tiempos razonables y con costos computacionales acotados. Además, la implementación de una API Restful utilizando Node.js y MongoDB permitiría una fácil integración con otras aplicaciones y sistemas existentes.
-La propuesta presentada puede ser una alternativa efectiva para optimizar la distribución de medicamentos en centros de salud. Se espera que este trabajo sirva como una base sólida para futuros estudios y desarrollos en este campo.
+En este trabajo se presentó una propuesta de solución para optimizar la
+distribución de medicamentos en centros de salud mediante la implementación de
+un algoritmo de Búsqueda del Péndulo (PSA) en una API Restful utilizando
+Node.js y MongoDB. La solución propuesta se centró en la utilización de la
+metaheurística como método de optimización y en la implementación de una
+aplicación web que permita a los usuarios realizar la optimización de la
+distribución de medicamentos de manera eficiente y efectiva.
+Se realizó una revisión bibliográfica exhaustiva sobre los algoritmos
+metaheurísticos y su aplicación en la optimización de la distribución de
+medicamentos en centros de salud. Se estudió en profundidad el algoritmo de
+Búsqueda del Péndulo (PSA) y se propone su implementación en una API Restful
+utilizando Node.js y MongoDB para la optimización de la distribución de
+medicamentos.
+La propuesta de solución presentada en este anteproyecto podría ser una
+alternativa viable y efectiva para resolver el problema de la distribución de
+medicamentos en centros de salud. La utilización de la metaheurística como
+método de optimización permitiría encontrar soluciones óptimas en tiempos
+razonables y con costos computacionales acotados. Además, la implementación de
+una API Restful utilizando Node.js y MongoDB permitiría una fácil integración
+con otras aplicaciones y sistemas existentes.
+La propuesta presentada puede ser una alternativa efectiva para optimizar la
+distribución de medicamentos en centros de salud. Se espera que este trabajo
+sirva como una base sólida para futuros estudios y desarrollos en este campo.
 
 \bibliographystyle{IEEEtran}
 \bibliography{EjemploBIO}
