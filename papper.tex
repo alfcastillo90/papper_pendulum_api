@@ -12,7 +12,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
 \title{Optimización en la asignación de vacunas en centros de salud mediante
-una API RESTful basada en el algoritmo de búsqueda de Péndulo\\
+    una API RESTful basada en el algoritmo de búsqueda de Péndulo\\
 }
 
 \author{\IEEEauthorblockN{Carlos Alfredo Castillo Rodriguez}
@@ -80,6 +80,7 @@ una API RESTful basada en el algoritmo de búsqueda de Péndulo\\
     efectiva.
 \end{abstract}
 
+\renewcommand{\IEEEkeywords}{Palabras clave}
 \begin{IEEEkeywords}
     APIs Restful, Metaheurisitcas, NodeJS, MongoDB, Optimización, Vacunas
 \end{IEEEkeywords}
@@ -256,6 +257,89 @@ La ecuación es:
 \begin{equation}
     X(t) = A \cdot e^{-\frac{b}{2m} \cdot t} \cdot \cos(\omega t - \phi)
 \end{equation}
+
+El movimiento armónico del péndulo es elegido aquí para controlar el paso de
+búsqueda de los agentes del algoritmo debido al patrón oscilante observado.
+Este patrón que se expande y se contrae alternadamente mientras disminuye la
+amplitud a lo largo del tiempo es deseable. Se predice que este comportamiento
+apoyará la exploración de los agentes al principio, y será equilibrado por la
+explotación a medida que avance la búsqueda
+El algoritmo presentado es una metaheurística basada en población, donde la
+búsqueda de la solución óptima es manejada por un grupo de agentes. Cada uno de
+los agentes, actúa como un péndulo, con parámetros independientes. Ellos se
+mueven alrededor del espacio de búsqueda, buscando el punto de solución optimo,
+impulsado por el movimiento del péndulo, que se centra alrededor de su propia
+posición actual.
+
+La posición del agente es calculada por medio de la siguiente
+ecuación\cite{aziz2022}:
+
+\begin{equation}
+    P_i^d (t) = P_i^d (t-1) + \text{pend}_i^d (t) \cdot (\text{Best}^d - P_i^d
+    (t-1))
+\end{equation}
+
+Donde $P_i^d (t)$ representa la posición del agente $i$ en la dimensión $d$ en
+el tiempo $t$ mientras que $\text{Best}^d$ representa la mejor solución
+encontrada desde el inicio de la búsqueda en toda la población. El agente se
+acerca o se aleja de la mejor solución en función de $\text{pend}_i^d$. Este
+último es un valor numérico aleatorio, con la amplitud máxima que oscila
+obedeciendo la ecuación armónica del péndulo. Todos los agentes tienen un
+$\text{pend}_i^d$ diferente y es calculado por medio de la siguiente ecuación.
+\cite{aziz2022}:
+
+\begin{equation}
+    \text{pend}_i^d (t) = 2 \exp\left(-\frac{t}{t_{\text{max}}}\cos(2\pi \cdot
+    \text{rand})\right)
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth, keepaspectratio]{Figures/image2.png}
+    \caption{Magnitud de oscilaciones de $\text{pend}_i^d (t)$.
+        \cite{aziz2022}}
+    \label{fig:mi_etiqueta}
+\end{figure}
+
+Esta ecuación imita la ecuación armónica, $t_{\text{max}}$ es el número máximo de
+iteraciones, y \texttt{rand} es un número aleatorio proveniente de una
+distribución uniforme. La amplitud máxima de desplazamiento 2 se elige de tal
+manera que la exploración sea favorecida durante las primeras iteraciones. Una
+vez que $\text{pend}_i^d (t)$ está por debajo de 1, los agentes cambian a
+favorecer la explotación. Además, $\text{pend}_i^d (t)$ oscila entre el rango
+positivo y negativo. Un valor positivo de $\text{pend}_i^d (t)$ anima a un
+agente a moverse hacia la dirección de la mejor solución, mientras que un
+$\text{pend}_i^d (t)$ negativo impulsa a los agentes en la dirección opuesta de
+la mejor solución \cite{aziz2022}.
+
+Solo se emplean dos ecuaciones matemáticas simples en el algoritmo de búsqueda
+del péndulo con dos parámetros a seleccionar, el número de agentes y el número
+máximo de iteraciones. Esto hace que sea un algoritmo de optimización muy
+simple con bajo costo computacional \cite{aziz2022}.
+
+El pseudocódigo del algoritmo es mostrado en la siguiente tabla:
+
+\renewcommand{\tablename}{Tabla}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Paso} & \textbf{Acción}                                                            \\
+        \hline
+        1             & Inicializar aleatoriamente los parámetros y las posiciones de los agentes. \\
+        2             & Para i = 1 hasta el número máximo de iteraciones:                          \\
+        3             & \hspace{1em} Para cada agente:                                             \\
+        4             & \hspace{2em} Actualizar el agente usando la ecuación (1) y (2).            \\
+        5             & \hspace{2em} Evaluar el valor de aptitud del agente.                       \\
+        6             & \hspace{1em} Fin del ciclo para cada agente.                               \\
+        7             & \hspace{1em} Identificar el mejor agente.                                  \\
+        8             & Fin del ciclo para i.                                                      \\
+        9             & Solución: mejor agente.                                                    \\
+        \hline
+    \end{tabular}
+    \caption{Pseudocódigo del Algoritmo de Búsqueda del Péndulo.}
+    \label{table:pendulumSearchAlgorithm}
+\end{table}
 
 \section{Resultados}
 \label{sec:Res}
