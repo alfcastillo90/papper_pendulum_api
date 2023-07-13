@@ -32,27 +32,33 @@ should not be used}
     \vspace{\baselineskip}
 
     En los últimos años, existen evidencias de desabastecimiento de
-    medicamentos en países subdesarrollados y en vías de desarrollo, por razones
+    medicamentos en países subdesarrollados y en vías de desarrollo, por
+    razones
     principalmente políticas o climáticas. Dicho desabastecimiento genera
     consecuencias negativas en la salud de la población. En especial en América
     Latina, la falta de vacunas ha sido la principal dificultad para ampliar la
-    cobertura de vacunación, debido a la alta dependencia de las importaciones de
+    cobertura de vacunación, debido a la alta dependencia de las importaciones
+    de
     medicamentos y materias primas para el desarrollo de tecnologías. Lograr
-    minimizar la falta de medicamentos es esencial para garantizar el derecho a la
+    minimizar la falta de medicamentos es esencial para garantizar el derecho a
+    la
     salud de las personas y fortalecer los programas de prevención y control de
     enfermedades.\par
 
     Cuando se habla de problemas de optimización, a menudo implican minimizar o
     maximizar recursos tales como pérdidas o ganancias. Estos problemas son
-    usualmente complejos y una solución con algoritmos de optimización exactos es
+    usualmente complejos y una solución con algoritmos de optimización exactos
+    es
     de alto costo computacional.\par
 
     Este trabajo tiene como objetivo proponer una solución para optimizar la
     distribución de medicamentos en centros de salud utilizando un algoritmo de
     Búsqueda del Péndulo (PSA) implementado en una API Restful con Node.js y
-    MongoDB. La solución propuesta se enfoca en la utilización de la metaheurística
+    MongoDB. La solución propuesta se enfoca en la utilización de la
+    metaheurística
     como método de optimización y la implementación de una aplicación web que
-    permita a los usuarios realizar la optimización de manera eficiente y efectiva.
+    permita a los usuarios realizar la optimización de manera eficiente y
+    efectiva.
     Se basó en una revisión bibliográfica exhaustiva de los algoritmos
     metaheurísticos y su aplicación en la optimización de la distribución de
     medicamentos en centros de salud. Se estudió en profundidad el algoritmo de
@@ -63,16 +69,19 @@ should not be used}
     La propuesta de solución presentada podría ser una alternativa viable y
     efectiva para resolver el problema de la distribución de medicamentos en
     centros de salud. La utilización de la metaheurística como método de
-    optimización permitiría encontrar soluciones óptimas en tiempos razonables y
+    optimización permitiría encontrar soluciones óptimas en tiempos razonables
+    y
     con costos computacionales acotados. Además, la implementación de una API
-    Restful utilizando Node.js y MongoDB permitiría una fácil integración con otras
+    Restful utilizando Node.js y MongoDB permitiría una fácil integración con
+    otras
     aplicaciones y sistemas existentes.\par
 
     En resumen, se propone una solución para optimizar la distribución de
     medicamentos en centros de salud utilizando un algoritmo de Búsqueda del
     Péndulo implementado en una API Restful con Node.js y MongoDB. La solución
     propuesta se enfoca en la utilización de la metaheurística como método de
-    optimización y la implementación de una aplicación web eficiente y efectiva.
+    optimización y la implementación de una aplicación web eficiente y
+    efectiva.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -115,7 +124,8 @@ Los objetivos específicos de este trabajo son los siguientes:
     \item Estudiar a fondo el algoritmo de Búsqueda del Péndulo y entender su
           implementación y parámetros necesarios.
     \item Implementar una API RESTful que incluya la implementación del
-          algoritmo para la optimización de la distribución de medicamentos en centros de
+          algoritmo para la optimización de la distribución de medicamentos en
+          centros de
           salud.
     \item Realizar pruebas y evaluaciones del algoritmo en la API en diferentes
           escenarios de distribución de medicamentos para validar su eficacia y
@@ -123,7 +133,8 @@ Los objetivos específicos de este trabajo son los siguientes:
     \item Generar una interfaz visual con Swagger para facilitar el uso de la
           API por parte de los usuarios.
     \item Evaluar la factibilidad y viabilidad de la aplicación web
-          desarrollada, teniendo en cuenta aspectos como la escalabilidad, seguridad,
+          desarrollada, teniendo en cuenta aspectos como la escalabilidad,
+          seguridad,
           usabilidad y costos.
 \end{enumerate}
 
@@ -131,14 +142,47 @@ Los objetivos específicos de este trabajo son los siguientes:
 \label{sec:MT}
 
 \subsection{Metaheurística}
-Las metaheurísticas son técnicas de optimización utilizadas para resolver
-problemas complejos, proporcionando soluciones aceptables en un tiempo más
-corto en comparación con los algoritmos de búsqueda exacta. Son altamente
-adaptables y no imponen ninguna exigencia sobre la formulación del problema de
-optimización \cite{soerensen2010}. Diversos mecanismos y estrategias, como un
-peso de inercia decreciente con el tiempo y operaciones de cruce, son adoptados
-para mejorar la eficiencia de la búsqueda \cite{eberhart2000, bansal2011,
-    elkhateeb2013, yang2011, sarangi2016, binkley2008}.
+En términos generales, una metaheurística es una técnica de optimización que se
+utiliza para resolver problemas combinatorios complejos en los que el número de
+posibles soluciones es muy grande. Las metaheurísticas son algoritmos de
+propósito general que se basan en principios heurísticos y estrategias de
+búsqueda no deterministas para encontrar soluciones óptimas o subóptimas en un
+tiempo razonable.
+
+A diferencia de los algoritmos de búsqueda exacta, que garantizan la obtención
+de la solución óptima en un tiempo finito, pero pueden ser demasiado costosos
+computacionalmente para problemas grandes, las metaheurísticas no garantizan la
+solución óptima, pero son capaces de encontrar soluciones aceptables en tiempos
+mucho más cortos.
+
+Una metaheurística es un marco algorítmico de alto nivel e independiente del
+problema que proporciona un conjunto de directrices o estrategias para
+desarrollar algoritmos de optimización heurísticos. Son una alternativa viable,
+y a menudo superior, a los métodos más tradicionales de optimización
+mixta-entera, como la ramificación y acotación y la programación dinámica.
+Especialmente para problemas complicados o instancias de problemas grandes, las
+metaheurísticas suelen ofrecer una mejor relación entre la calidad de la
+solución y el tiempo de cómputo. Además, las metaheurísticas son más flexibles
+que los métodos exactos en dos aspectos importantes. En primer lugar, debido a
+que los marcos metaheurísticos están definidos en términos generales, los
+algoritmos metaheurísticos pueden adaptarse a las necesidades de la mayoría de
+los problemas de optimización de la vida real en términos de calidad de
+solución esperada y tiempo de cómputo permitido, que pueden variar ampliamente
+entre diferentes problemas y situaciones diferentes. En segundo lugar, las
+metaheurísticas no imponen ninguna exigencia sobre la formulación del problema
+de optimización (como requerir que las restricciones o las funciones objetivo
+se expresen como funciones lineales de las variables de decisión). Sin embargo,
+esta flexibilidad requiere una considerable adaptación específica del problema
+para lograr un buen rendimiento\cite{soerensen2010}.
+
+Un peso de inercia decreciente con el tiempo es un ejemplo de un mecanismo
+adoptado con frecuencia por los investigadores para controlar el comportamiento
+de los agentes y favorecer la exploración al inicio de la búsqueda antes de
+cambiar a la explotación \cite{eberhart2000, bansal2011,
+    elkhateeb2013}. El peso de inercia decreciente con el tiempo reduce el tamaño del paso a medida que aumenta la
+iteración. Entre los patrones comunes aplicados por los investigadores se
+encuentran el peso de inercia decreciente linealmente y el peso de inercia
+decreciente exponencialmente\cite{bansal2011}.
 
 \subsection{Node.js}
 Node.js es un entorno de ejecución de código abierto que permite la
@@ -168,6 +212,47 @@ diseño de microservicios y admiten la interoperabilidad y la WWW. Los
 principios de REST, como la interfaz uniforme y la identificación de recursos,
 permiten una arquitectura simple y escalable \cite{ehsan2022}.
 
+\subsection{Algoritmo de búsqueda del pendulo}
+El movimiento armónico del péndulo que oscila centrado en un punto pivote se
+imita en este algoritmo. Donde la amplitud del movimiento armónico en ambos
+lados del pivote es igual, va amortiguándose y disminuyéndose con el tiempo.
+Este comportamiento es imitado por los agentes del algoritmo de búsqueda del
+péndulo para moverse y buscar una solución de optimización dentro de un área de
+búsqueda. La alta amplitud al principio fomenta la exploración y amplía el área
+de búsqueda, mientras que mientras que la baja amplitud hacia el final fomenta
+el ajuste fino y la explotación. \cite{aziz2022}.
+El movimiento armónico del péndulo amortiguado es la inspiración del algoritmo.
+El peso oscila de un lado a otro, mientras que la amplitud de la oscilación
+disminuye con el tiempo hasta que se alcanza el equilibrio. La resistencia del
+aire amortigua y desacelera el movimiento del péndulo. \cite{aziz2022}.
+
+La imagen 1 ilustra un péndulo oscilante colgado de una cuerda y su típica oscilación armónica. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth, keepaspectratio]{Figures/image1.png}
+    \caption{Movimiento armonico del pendulo. \cite{aziz2022}}
+    \label{fig:mi_etiqueta}
+\end{figure}
+
+Según \cite{aziz2022} La ecuación de la oscilación armónica se muestra en la formula 1, es una ecuación de movimiento armónico simple amortiguado, donde:
+
+\begin{enumerate}
+    \item $X(t)$ es la posición del objeto en función del tiempo.
+    \item $A$ es la amplitud de la oscilación, que representa la distancia máxima que el objeto se desplaza desde su posición de equilibrio.
+    \item $b$ es el coeficiente de amortiguamiento, que determina la rapidez con que se desvanece la amplitud de la oscilación debido al rozamiento del objeto con el medio en el que se encuentra.
+    \item $m$ es la masa del objeto en movimiento.
+    \item $t$ es el tiempo transcurrido desde el inicio del movimiento.
+    \item $\omega$ es la frecuencia angular, que determina la velocidad a la que se mueve el objeto en función del tiempo.
+    \item $\phi$ es la fase inicial de la oscilación, que representa el desfase entre el movimiento y su punto de partida.
+\end{enumerate}
+
+La ecuación es:
+
+\begin{equation}
+X(t) = A \cdot e^{-\frac{b}{2m} \cdot t} \cdot \cos(\omega t - \phi) 
+\end{equation}
+
+
 \section{Resultados}
 \label{sec:Res}
 \subsection{Resultados 1}
@@ -188,14 +273,19 @@ Fig.~\ref{fig:1}
     \begin{center}
         \begin{tabular}{|c|c|c|c|}
             \hline
-            \textbf{Table}            & \multicolumn{3}{|c|}{\textbf{Table Column Head}}
+            \textbf{Table}            & \multicolumn{3}{|c|}{\textbf{Table
+                    Column Head}}
             \\
             \cline{2-4}
-            \textbf{Head}             & \textbf{\textit{Table column subhead}}           &
-            \textbf{\textit{Subhead}} & \textbf{\textit{Subhead}}                          \\
+            \textbf{Head}             & \textbf{\textit{Table column subhead}}
+                                      &
+            \textbf{\textit{Subhead}} & \textbf{\textit{Subhead}}
+            \\
             \hline
-            copy                      & More table copy$^{\mathrm{a}}$                   &
-                                      &                                                    \\
+            copy                      & More table copy$^{\mathrm{a}}$
+                                      &
+                                      &
+            \\
             \hline
             \multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
         \end{tabular}
